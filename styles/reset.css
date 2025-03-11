@@ -1,0 +1,53 @@
+/* Box sizing border-box para todos os elementos */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Removendo estilos padrão de lista */
+  ul, ol {
+    list-style: none;
+  }
+  
+  /* Removendo decoração de links */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Garantindo um estilo básico para inputs e botões */
+  input, button, textarea, select {
+    font: inherit;
+    border: none;
+    outline: none;
+    background: none;
+  }
+  
+  /* Ajustando elementos de mídia */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Melhorando acessibilidade e responsividade */
+  html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+  }
+  
+  /* Reset de cabeçalhos para não terem margens inesperadas */
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-weight: normal;
+  }
+  
+  /* Corpo com estilo padrão */
+  body {
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');

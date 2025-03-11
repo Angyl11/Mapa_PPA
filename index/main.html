@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa PPA</title>
+    <link rel="Websit icon"  type="img" href="/styles/imagens/images.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/vars.css">
+</head>
+<body>
+    <!--Div com todos os elementos-->
+    <div class="all_elements">
+        <!--side bar lateral-->
+        <div class="sidebar_direcionamentos">
+            <div class="directs"><a class="directs" href=""><i class="fa-solid fa-bars"></i></a></div>
+            <div class="directs"><a class="directs" href="/index/Untitled-2.html"><i class="fa-solid fa-house"></i></a></div>
+            <div class="directs_sobre_nos"><a href="/index/sobre_nos.html"><i class="fa-solid fa-code"></i></a></div>
+        </div>     
+        <!--container principal com o mapa-->
+        <main>
+            <div id="map">
+                <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                <script src="/back_end/source/index.js"></script>
+            </div>
+        </main>
+        <!--scroll com as escolas-->
+        <div class="sidebar_inicial">
+            <section class="locais">
+                <div class="direcionamentos caixadepesquisa"><input type="text" placeholder="pesquisar..." style="color: var(--color4);"></div>
+                <a href="/index/Locais/SEC.html" class="direcionamentos"><span>Secretaria de Educação</span></a>
+                <a href="/index/Locais/CMDLEMM.html" class="direcionamentos"><span>Colégio Municipal Deputado Luís Eduardo Meron de Magalhães</span></a>
+                <a href="/index/Locais/CEFCM.html" class="direcionamentos"><span>Colégio Estadual Franscisco da Conceição Menezes</span></a>
+            </section>
+        </div>     
+        <!--Logo e nome da escola, comum para todas as paginas-->
+        <div class="if_logo">
+            <div class="logo"><img src="/styles/imagens/INSTITUTO FEDERAL logo.png" alt=""></div>
+            <div class="text"><span>INSTITUTO FEDERAL DA BAHIA CAMPUS SANTO ANTÔNIO DE JESUS</span></div>
+        </div>
+    </div>
+</body>
+</html>

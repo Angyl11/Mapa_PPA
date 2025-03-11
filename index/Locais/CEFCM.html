@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colégio  Estadual Francisco da Conceição Menezes</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/estilos_locais/CEFCM.css">
+    <link rel="stylesheet" href="/styles/vars.css">
+</head>
+<body>
+    <div class="all_elements">
+
+        <div class="sidebar_controls">
+            <div class="sidebar_direcionamentos">
+                <div class="scroll_sidebar_direcionamentos">
+                    <div class="directs"><a href="/index/main.html"><i class="fa-solid fa-house"></i></a></div>
+
+                    <section class="itens_scroll_sidebar_direcionamentos">
+                            <!--foto local-->
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="/styles/foto_locais/francisco_menezes.png" alt=""></div>
+                                    <div class="swiper-slide"><img src="/styles/foto_locais/Francisco.jpg" alt=""></div>
+                                    <div class="swiper-slide"><img src="/styles/foto_locais/fran.jpg" alt=""></div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <!--informações tecnicas-->
+                            <div class="infos nome_local">
+                                <span>Colégio  Estadual Francisco da Conceição Menezes</span>
+                            </div>
+                            <!--infos local-->
+                            <div class="infos infos_local">
+                                <ul>
+                                    <li><span>Código INEP:	 29171601
+                                    </span></li>
+
+                                    <li><span>
+                                        Localização: Logradouro: Rua Machado Bitencourt, S\N
+                                        Bairro: Andaia
+                                        Município/UF: Santo Antonio de Jesus, BA
+                                        Brasil                                        
+                                    </span></li>
+
+                                    <li><span>Contato (telefone):  (75) 3631-0066
+                                    </span></li>
+
+                                    <li><span>Contato (email): cefcm.9256@hotmail.com 
+                                    </span></li>
+                                </ul>
+                            </div>
+                            <div class="barra"></div>
+                            <!--informações sobre politicas publicas-->
+                            <div class="infos politicas_publicas">
+
+                                <h1 class="titulo">Políticas públicas implementadas na escola:</h1> 
+
+                                <p class="paragrafo">
+                                    O Colégio Estadual Francisco da Conceição Menezes, localizado em Santo Antônio de Jesus, Bahia, oferece Ensino Médio e Educação de Jovens e Adultos (EJA) em modalidades presencial e noturna. A escola possui infraestrutura básica adequada, incluindo abastecimento de água, energia elétrica, esgotamento sanitários e serviços de coleta de lixo periódicos. 
+                                    No que se refere à acessibilidade, a escola conta apenas com sanitários com acessibilidade e não tem recursos específicos, como corrimãos, rampas ou sinalizações táteis e visuais, o que pode limitar o acesso de pessoas com deficiência ou mobilidade reduzida. 
+                                    Em termos de equipamentos, a instituição está equipada com antena parabólica, copiadora, impressora, aparelhos de DVD, som e televisão, além de acesso à internet. No entanto, não possui scanners, lousa digital ou projetores multimídia, o que pode restringir o uso de tecnologias educacionais mais avançadas. 
+                                    As instalações da escola incluem biblioteca com sala de leitura, cozinha, banheiros (acessíveis para pessoas com deficiência), quadra de esportes descoberta e salas para diretoria, professores e secretaria. Por outro lado, não há almoxarifado, auditório, laboratórios de ciências ou informática, pátio coberto, parque infantil, piscina, refeitório, salas de artes, música ou dança, sala multiuso, dormitório para alunos ou professores, criação de animais. 
+                                    Em resumo, o Colégio Estadual Francisco da Conceição Menezes possui uma infraestrutura básica que atende às necessidades essenciais de seus alunos. Contudo, a ausência de recursos de acessibilidade, equipamentos tecnológicos avançados e instalações complementares pode impactar a qualidade do ensino e a inclusão de todos os estudantes.                                    
+                                </p>                           
+                            </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <div id="map">
+                <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                <script src="/back_end/source/index.js"></script>
+            </div>
+        </main>
+
+        <div class="sidebar_inicial">
+            <section class="locais">
+                <div class="direcionamentos caixadepesquisa"><input type="text" placeholder="pesquisar..."></div>
+                <a href="/index/Locais/SEC.html" class="direcionamentos"><span>Secretaria de Educação</span></a>
+                <a href="/index/Locais/CMDLEMM.html" class="direcionamentos"><span>Colégio Municipal Deputado Luís Eduardo Meron de Magalhães</span></a>
+                <a href="/index/Locais/CEFCM.html" class="direcionamentos"><span>Colégio Estadual Franscisco da Conceição Menezes</span></a>
+            </section>
+            
+        </div>
+
+        <div class="if_logo">
+            <div class="logo"><img src="/styles/imagens/INSTITUTO FEDERAL logo.png" alt=""></div>
+            <div class="text"><span>INSTITUTO FEDERAL DA BAHIA CAMPUS SANTO ANTÔNIO DE JESUS</span></div>
+        
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Seleciona o contêiner do carrossel
+    var swiperContainer = '.swiper';
+
+    // Configurações do loop
+    var swiperLoop = true;
+
+    // Configuração dos botões de navegação
+    var navigationConfig = {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+    };
+
+    // Configuração da paginação
+    var paginationConfig = {
+        el: '.swiper-pagination',
+        clickable: true
+    };
+
+    // Inicializa o Swiper com as configurações definidas
+    var swiper = new Swiper(swiperContainer, {
+        loop: swiperLoop,
+        navigation: navigationConfig,
+        pagination: paginationConfig
+    });
+</script>
+
+</html>
