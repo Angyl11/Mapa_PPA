@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url(/styles/media_querys.css);
+html, body{
+    background-color: var(--color1);
+    font-family: Poppins, sans-serif;
+}
+/*div com todos os elementos (SEMPRE COLOCAR: position: fixed*/
+.all_elements{
+    position: fixed;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    display: flex;
+    color: var(--color4);
+}
+
+
+
+/*sidebar lateral com direcionamento para a sobre nós e as escolas*/
+.sidebar_direcionamentos{
+    position: relative;
+    width: 100px;
+    height: 730px;
+    background-color: var(--color3);
+    color: var(--color4);
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*icones da sidebar, exclusivo do main.html*/
+.directs{
+    width: 40px;
+    height: 40px;
+    margin-top: 30px;
+    align-items: center;
+    font-size: 30px;
+    text-align: center;
+}
+
+.directs_sobre_nos{ 
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 0;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+/*mapa: Comum para todas as paginas*/
+main{
+    width: 100%;
+    height: auto;
+}
+#map{
+    position: fixed;
+    width: 100%;
+    height: 730px;
+}
+
+
+/*sibebar flutuante e com scrollbar com as escolas e o negocio de pesquisar*/
+.sidebar_inicial{    
+    position: absolute;
+    width: 100%;
+    height: auto;
+    margin-left: 150px;
+    overflow-y: auto;
+}
+
+/*configurações do scroll*/
+.sidebar_inicial::-webkit-scrollbar{
+    width: 1px;
+}
+.sidebar_inicial::-webkit-scrollbar-thumb{
+    background-color: var(--color3);
+}
+
+.locais{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1px;
+    display: grid;
+    grid-gap: 3px;
+    gap: 3px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/*configurações das caixas dentro do scroll (lembrar de alterar para 200px)*/
+.direcionamentos{
+    width: 200px;
+    height: 40px;
+    background-color: var(--color3);
+    border-radius: 20px;
+    align-content: center;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 10px;
+}
+
+
+
+/*logo da escola e nome*/
+.if_logo{    
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    margin-left: 100px;
+    display: inline-block;
+    display: flex;
+    align-content: center;
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+}
+.text{
+    align-content: end;
+    color: black;
+}

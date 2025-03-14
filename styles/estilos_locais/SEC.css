@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body{
+    background-color: var(--color1);
+}
+
+/*sempre colocar o position: fixed;*/
+.all_elements{
+    position: fixed;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    display: flex;
+}
+
+/*sidebar lateral, com as informações das escolas*/
+.sidebar_controls{
+    width: 600px;
+    height: auto;
+    color: var(--color4);
+}
+
+.sidebar_direcionamentos{
+    width: 610px;
+    height: 730px;
+    overflow-y: auto;
+}
+
+.directs{
+    background-color: var(--color3);
+    border-radius: 20px;
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 150px;
+    align-items: center;
+    font-size: 30px;
+    text-align: center;
+
+}
+
+.scroll_sidebar_direcionamentos{
+    background-color: var(--color3);
+    width: 600px;
+    height: auto;
+    overflow-y: auto;
+}
+
+.scroll_sidebar_direcionamentos::-webkit-scrollbar{
+    width: 1px;
+}
+
+.itens_scroll_sidebar_direcionamentos{
+    display: grid;
+    gap: 1px;
+    grid-template-columns: 1fr;
+    grid-gap: 1px;
+    margin-bottom: 0;
+}
+
+.infos{
+	width: 600px;
+	height: 450px;
+}
+.swiper{
+    margin: 0;
+    width: 600px;
+    height: 300px;
+}
+.swiper-pagination-bullet{
+	background-color:white;
+}
+.swiper-button-next, .swiper-button-prev{
+	color: var(--color3);
+}
+.swiper-slide img{
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
+.nome_local{
+    width: 600px;
+    height: 50px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.infos_local{
+    width: 600px;
+    height: auto; 
+    font-size: 20px;
+    margin-left: 10px;
+
+}
+.barra{
+    margin-top: 5px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color1);
+}
+
+.politicas_publicas{
+    margin-top: 5px;
+    text-align: justify;
+    padding: 10px;
+}
+.politicas_publicas h1{
+    text-align: center;
+}
+
+.politicas_publicas li{
+    padding-top: 10px;
+}
+
+
+
+/*sidebar com o nome das escolas e a pesquisa*/
+.sidebar_inicial{
+    width: 870px;
+    position: absolute;
+    margin-left: 660px;
+    overflow-y: auto;
+}
+
+.sidebar_inicial::-webkit-scrollbar{
+    width: 1px;
+}
+
+.locais{
+    margin-bottom: 1px;
+    display: grid;
+    grid-gap: 5px;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.direcionamentos{
+    width: 250px;
+    height: 40px;
+    background-color: var(--color3);
+    border-radius: 20px;
+    align-content: center;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 10px;
+    color: var(--color4);
+}
+
+
+/*nome e logo da escola*/
+.if_logo{    
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    margin-left: 610px;
+    display: inline-block;
+    display: flex;
+    align-content: center;
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+}
+.text{
+    align-content: end;
+}
+
+  
+
+/*div principal e mapa*/
+main{
+    width: 100%;
+    height: auto;
+}
+#map{
+    position: fixed;
+    width: 100%;
+    height: 720px;
+}
