@@ -1,19 +1,63 @@
+// Inicializa o mapa centralizado em Santo Antônio de Jesus, com zoom mínimo 14
 const map = L.map("map", { minZoom: 14 }).setView([-12.9703, -39.2609], 15);
 
+// Adiciona um tile layer ao mapa
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+// Ícone customizado para os marcadores
 const customIcon = L.icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/7945/7945007.png", 
-  iconSize: [30, 30],
-  iconAnchor: [15, 30],
-  popupAnchor: [0, -30]
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/14090/14090489.png", // Novo ícone
+  iconSize: [32, 32], // Ajuste o tamanho do ícone
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32]
 });
 
-function setupPopupHover(marker) {
+// Lista fixa de marcadores (sem JSON)
+const marcadores = [
+  {
+    nome: "Secretaria de Educação",
+    coordenadas: [-12.967554, -39.259519],
+    descricao: `
+      <b>Secretária de Educação</b><br>
+      <strong>Secretária atual:</strong> Maria Edileide De Castro<br>
+      <strong>Subsecretária:</strong> Thaís Coutinho<br>
+      <strong>Localização:</strong> Praça Me. Rosário, 219 - Centro<br>
+      <strong>Telefone:</strong> (75) 3632-1330<br>
+      <strong>Email:</strong> sme@saj.ba.gov.br
+    `
+  },
+  {
+    nome: "CEFCM",
+    coordenadas: [-12.9704024, -39.2702005],
+    descricao: `
+      <b>Colégio Estadual Francisco da Conceição Menezes</b><br>
+      <strong>Diretora:</strong> Joelma de Queiroz Nunes<br>
+      <strong>Endereço:</strong> R. Machado Bitencourt, s/n - Andaia<br>
+      <strong>Telefone:</strong> (75) 3631-3502 <br>
+      <strong>Email:</strong> cefcm.9256@hotmail.com
+    `
+  },
+  {
+    nome: "Escola Municipal Deputado Luís Eduardo Maron Magalhães",
+    coordenadas: [-12.9678899, -39.2677317],
+    descricao: `
+      <b>Escola Municipal Dep. Luís Eduardo Maron Magalhães</b><br>
+      <strong>Localização:</strong> Vereador Ademario Francisco Dos Santos, SN - Centro<br>
+      <strong>Contato:</strong> (75) 3632-4548<br>
+      <strong>E-mail:</strong> escolaluiseduardo@hotmail.com
+    `
+  }
+];
+
+// Adiciona os marcadores no mapa
+marcadores.forEach(item => {
+  const marker = L.marker(item.coordenadas, { icon: customIcon }).addTo(map);
+  marker.bindPopup(item.descricao);
+
+  // Mantém o pop-up aberto enquanto o mouse estiver sobre o marcador ou popup
   let markerHovered = false;
   let popupHovered = false;
 
@@ -21,12 +65,14 @@ function setupPopupHover(marker) {
     markerHovered = true;
     marker.openPopup();
   });
+
   marker.on("mouseout", () => {
     markerHovered = false;
     setTimeout(() => {
       if (!markerHovered && !popupHovered) marker.closePopup();
     }, 100);
   });
+
   marker.on("popupopen", function () {
     const popupEl = marker.getPopup().getElement();
     popupEl.addEventListener("mouseenter", () => {
@@ -39,119 +85,4 @@ function setupPopupHover(marker) {
       }, 100);
     });
   });
-}
-function setupCarousel(popupEl) {
-  popupEl.addEventListener("click", function (e) {
-    if (e.target.matches("#next-btn1")) {
-      popupEl.querySelector("#page1").style.display = "none";
-      popupEl.querySelector("#page2").style.display = "block";
-    } else if (e.target.matches("#next-btn2")) {
-      popupEl.querySelector("#page2").style.display = "none";
-      popupEl.querySelector("#page3").style.display = "block";
-    } else if (e.target.matches("#prev-btn2")) {
-      popupEl.querySelector("#page2").style.display = "none";
-      popupEl.querySelector("#page1").style.display = "block";
-    } else if (e.target.matches("#prev-btn3")) {
-      popupEl.querySelector("#page3").style.display = "none";
-      popupEl.querySelector("#page2").style.display = "block";
-    }
-  });
-}
-
-fetch("dadosCEFCM.json")
-  .then(response => response.json())
-  .then(cefcData => {
-    const markerCEFCM = L.marker(cefcData.coordenadas, { icon: customIcon }).addTo(map);
-    
-    const page1Content = `
-      <div class="popup-page" id="page1">
-        <p><b>${cefcData.nome}</b></p>
-        <p><strong>Tipo:</strong> ${cefcData.tipo}</p>
-        <p><strong>Diretora:</strong> ${cefcData.diretora}</p>
-        <p><strong>Localização:</strong> ${cefcData.endereco}</p>
-        <p><strong>Contato:</strong> ${cefcData.contato}</p>
-        <button id="next-btn1">Próximo &gt;</button>
-      </div>
-    `;
-    const page2Content = `
-      <div class="popup-page" id="page2" style="display: none;">
-        <p><strong>Infraestrutura e Corpo Docente:</strong></p>
-        <p>${cefcData.infraestrutura}</p>
-        <button id="prev-btn2">&lt; Voltar</button>
-        <button id="next-btn2">Próximo &gt;</button>
-      </div>
-    `;
-    const page3Content = `
-      <div class="popup-page" id="page3" style="display: none;">
-        <p><strong>Projetos e Diferenciais:</strong></p>
-        <p>${cefcData.projetos}</p>
-        <button id="prev-btn3">&lt; Voltar</button>
-      </div>
-    `;
-    
-    const popupContentCEFCM = `
-      <div id="popup-carousel">
-        ${page1Content}
-        ${page2Content}
-        ${page3Content}
-      </div>
-    `;
-    
-    markerCEFCM.bindPopup(popupContentCEFCM);
-    markerCEFCM.on("popupopen", function () {
-      const popupEl = markerCEFCM.getPopup().getElement();
-      setupCarousel(popupEl);
-    });
-    setupPopupHover(markerCEFCM);
-  })
-  .catch(error => console.error("Erro ao carregar dados do CEFCM:", error));
-
-fetch("dadosSecretaria.json")
-  .then(response => response.json())
-  .then(secretaria => {
-    console.log("Dados da Secretaria:", secretaria);
-    const markerSecretaria = L.marker(secretaria.coordenadas, { icon: customIcon }).addTo(map);
-    
-    const page1Content = `
-      <div class="popup-page" id="page1">
-        <p><b>Secretaria de Educação</b></p>
-        <p><strong>Secretária atual:</strong> ${secretaria.secretariaAtual}</p>
-        <p><strong>Subsecretária:</strong> ${secretaria.subsecretaria}</p>
-        <p><strong>Localização:</strong> ${secretaria.localizacao}</p>
-        <p><strong>Telefone:</strong> ${secretaria.telefone}</p>
-        <p><strong>Email:</strong> ${secretaria.email}</p>
-        <button id="next-btn1">Próximo &gt;</button>
-      </div>
-    `;
-    const page2Content = `
-      <div class="popup-page" id="page2" style="display: none;">
-        <p><strong>Políticas Públicas - Parte 1:</strong></p>
-        <p>${secretaria.politicasParte1}</p>
-        <button id="prev-btn2">&lt; Voltar</button>
-        <button id="next-btn2">Próximo &gt;</button>
-      </div>
-    `;
-    const page3Content = `
-      <div class="popup-page" id="page3" style="display: none;">
-        <p><strong>Políticas Públicas - Parte 2:</strong></p>
-        <p>${secretaria.politicasParte2}</p>
-        <button id="prev-btn3">&lt; Voltar</button>
-      </div>
-    `;
-    
-    const popupContentSecretaria = `
-      <div id="popup-carousel">
-        ${page1Content}
-        ${page2Content}
-        ${page3Content}
-      </div>
-    `;
-    
-    markerSecretaria.bindPopup(popupContentSecretaria);
-    markerSecretaria.on("popupopen", function () {
-      const popupEl = markerSecretaria.getPopup().getElement();
-      setupCarousel(popupEl);
-    });
-    setupPopupHover(markerSecretaria);
-  })
-  .catch(error => console.error("Erro ao carregar dados da Secretaria:", error));
+});
